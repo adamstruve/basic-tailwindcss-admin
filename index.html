@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="//unpkg.com/alpinejs" defer></script>
+  </head>
+  <body class="font-sans bg-gray-100">
+    <!-- Mobile Header -->
+    <header class="bg-gray-800 text-white p-4 sm:hidden">
+      <div class="flex items-center justify-between">
+        <a href="#">
+          <h1 class="text-xl font-semibold">Admin Dashboard</h1>
+        </a>
+        <button id="mobile-menu-button" class="text-xl focus:outline-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <nav id="mobile-menu" class="hidden mt-4" x-data="{ openSection: null }">
+        <ul class="space-y-2">
+          <li>
+            <a href="#" class="block py-2 px-4 hover:bg-gray-700">Dashboard</a>
+          </li>
+          <li>
+            <a
+              href="#"
+              @click="openSection === 'posts' ? openSection = null : openSection = 'posts'"
+              :class="{ 'bg-gray-700': openSection === 'posts', 'hover:bg-gray-700': openSection !== 'posts' }"
+              class="block py-2 px-4"
+              >Posts</a
+            >
+            <ul x-show="openSection === 'posts'">
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                  >Option 1</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                  >Option 2</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a
+              href="#"
+              @click="openSection === 'users' ? openSection = null : openSection = 'users'"
+              :class="{ 'bg-gray-700': openSection === 'users', 'hover:bg-gray-700': openSection !== 'users' }"
+              class="block py-2 px-4"
+              >Users</a
+            >
+            <ul x-show="openSection === 'users'">
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                  >Option 1</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                  >Option 2</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                  >Option 3</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="block py-2 px-4 hover:bg-gray-700">Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Desktop Layout -->
+    <div class="flex">
+      <!-- Desktop Sidebar -->
+      <aside class="bg-gray-800 text-white w-64 min-h-screen hidden sm:block">
+        <div class="p-4">
+          <a href="#">
+            <h1 class="text-2xl font-semibold">Admin Dashboard</h1>
+          </a>
+        </div>
+        <nav x-data="{ openSection: null }">
+          <ul class="space-y-2">
+            <li>
+              <a href="#" class="block py-2 px-4 hover:bg-gray-700"
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                @click="openSection === 'posts' ? openSection = null : openSection = 'posts'"
+                :class="{ 'bg-gray-700': openSection === 'posts', 'hover:bg-gray-700': openSection !== 'posts' }"
+                class="block py-2 px-4"
+                >Posts</a
+              >
+              <ul x-show="openSection === 'posts'">
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                    >Option 1</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                    >Option 2</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="#"
+                @click="openSection === 'users' ? openSection = null : openSection = 'users'"
+                :class="{ 'bg-gray-700': openSection === 'users', 'hover:bg-gray-700': openSection !== 'users' }"
+                class="block py-2 px-4"
+                >Users</a
+              >
+              <ul x-show="openSection === 'users'">
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                    >Option 1</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                    >Option 2</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 px-4 bg-gray-600 hover:bg-gray-500"
+                    >Option 3</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="block py-2 px-4 hover:bg-gray-700">Settings</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Content -->
+      <main class="p-6 flex-1">
+        <!-- Search Form -->
+        <div class="mb-6">
+          <form class="flex items-center">
+            <input
+              type="text"
+              placeholder="Search..."
+              class="form-input border rounded-lg px-4 py-2 w-full"
+            />
+            <button
+              type="submit"
+              class="bg-blue-500 text-white py-2 px-4 ml-2 rounded-lg hover:bg-blue-600"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+
+        <!-- Form -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h2 class="text-2xl font-semibold mb-4">Generic Form</h2>
+          <form>
+            <div class="mb-4">
+              <label for="name" class="block font-medium text-gray-700"
+                >Name</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-input border rounded-lg px-4 py-2 w-full"
+              />
+            </div>
+            <div class="mb-4">
+              <label for="email" class="block font-medium text-gray-700"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input border rounded-lg px-4 py-2 w-full"
+              />
+            </div>
+            <div class="mb-4">
+              <label for="message" class="block font-medium text-gray-700"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea border rounded-lg px-4 py-2 w-full"
+              ></textarea>
+            </div>
+            <div class="mb-4">
+              <label for="gender" class="block font-medium text-gray-700"
+                >Gender</label
+              >
+              <select
+                id="gender"
+                name="gender"
+                class="form-select border rounded-lg px-4 py-2 w-full"
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="block font-medium text-gray-700">Interests</label>
+              <div class="space-y-2">
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="interests[]"
+                    value="sports"
+                    class="form-checkbox"
+                  />
+                  <span class="ml-2">Sports</span>
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="interests[]"
+                    value="music"
+                    class="form-checkbox"
+                  />
+                  <span class="ml-2">Music</span>
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="interests[]"
+                    value="movies"
+                    class="form-checkbox"
+                  />
+                  <span class="ml-2">Movies</span>
+                </label>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label class="block font-medium text-gray-700">Choose one:</label>
+              <div class="space-y-2">
+                <label class="flex items-center">
+                  <input
+                    type="radio"
+                    name="choice"
+                    value="option1"
+                    class="form-radio"
+                  />
+                  <span class="ml-2">Option 1</span>
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="radio"
+                    name="choice"
+                    value="option2"
+                    class="form-radio"
+                  />
+                  <span class="ml-2">Option 2</span>
+                </label>
+                <label class="flex items-center">
+                  <input
+                    type="radio"
+                    name="choice"
+                    value="option3"
+                    class="form-radio"
+                  />
+                  <span class="ml-2">Option 3</span>
+                </label>
+              </div>
+            </div>
+            <div class="mb-4">
+              <button
+                type="submit"
+                class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <!-- JavaScript to handle mobile menu toggle -->
+    <script>
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+  </body>
+</html>
