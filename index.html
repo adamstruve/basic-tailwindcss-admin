@@ -11,14 +11,17 @@
     />
     <script src="//unpkg.com/alpinejs" defer></script>
   </head>
-  <body class="font-sans bg-gray-100">
+  <body class="font-sans bg-gray-100" x-data="{ mobileMenuOpen: false }">
     <!-- Mobile Header -->
     <header class="bg-gray-800 text-white p-4 sm:hidden">
       <div class="flex items-center justify-between">
         <a href="#">
           <h1 class="text-xl font-semibold">Admin Dashboard</h1>
         </a>
-        <button id="mobile-menu-button" class="text-xl focus:outline-none">
+        <button
+          x-on:click="mobileMenuOpen = !mobileMenuOpen"
+          class="text-xl focus:outline-none"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -35,7 +38,12 @@
           </svg>
         </button>
       </div>
-      <nav id="mobile-menu" class="hidden mt-4" x-data="{ openSection: null }">
+      <nav
+        id="mobile-menu"
+        class="mt-4"
+        x-show="mobileMenuOpen"
+        x-data="{ openSection: null }"
+      >
         <ul class="space-y-2">
           <li>
             <a href="#" class="block py-2 px-4 hover:bg-gray-700">Dashboard</a>
@@ -329,15 +337,5 @@
         </div>
       </main>
     </div>
-
-    <!-- JavaScript to handle mobile menu toggle -->
-    <script>
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    </script>
   </body>
 </html>
